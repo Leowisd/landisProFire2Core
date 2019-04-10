@@ -45,33 +45,32 @@ namespace Landis.Extension.Landispro.Fire
             Console.WriteLine();
            
 
-            Console.WriteLine("Harvest Dll loaded in...");
+            Console.WriteLine("FIRE Dll loaded in...");
             Console.WriteLine();
 
-            GlobalFunctions.HarvestPass(Landis.Extension.Succession.Landispro.PlugIn.gl_sites, Landis.Extension.Succession.Landispro.PlugIn.gl_spe_Attrs);
-            Landis.Extension.Succession.Landispro.PlugIn.gl_sites.Harvest70outputdim();
+            //Todo
+            
 
-            Console.WriteLine("End Landis_pro Harvest Parameters Loading\n");
+            Console.WriteLine("End Landis_pro FIRE Parameters Loading\n");
             Console.WriteLine("========================================\n");
         }
 
         public override void Initialize()
         {
-            Console.WriteLine("Running Landis_pro Harvest Initialization...");
+            Console.WriteLine("Running Landis_pro FIRE Initialization...");
             Console.WriteLine();
 
             Landis.Extension.Succession.Landispro.PlugIn.gl_sites.stocking_x_value = Landis.Extension.Succession.Landispro.PlugIn.gl_param.Stocking_x_value;
             Landis.Extension.Succession.Landispro.PlugIn.gl_sites.stocking_y_value = Landis.Extension.Succession.Landispro.PlugIn.gl_param.Stocking_y_value;
             Landis.Extension.Succession.Landispro.PlugIn.gl_sites.stocking_z_value = Landis.Extension.Succession.Landispro.PlugIn.gl_param.Stocking_z_value;
             Landis.Extension.Succession.Landispro.PlugIn.gl_sites.SuccessionTimeStep = Landis.Extension.Succession.Landispro.PlugIn.gl_param.SuccessionTimestep;
-            Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepHarvest = Landis.Extension.Succession.Landispro.PlugIn.gl_param.TimeStepHarvest;
-            Timestep = Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepHarvest;
+            // FIRE TIMESTEP
+            Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepFire = Landis.Extension.Succession.Landispro.PlugIn.gl_param.TimeStepFire;
+            Timestep = Landis.Extension.Succession.Landispro.Plugin.gl_sites.TimeStepFire;
 
             Landis.Extension.Succession.Landispro.PlugIn.numSpecies = Landis.Extension.Succession.Landispro.PlugIn.gl_spe_Attrs.NumAttrs;
 
-            Landis.Extension.Succession.Landispro.PlugIn.freq[5] = 1;
-
-            Console.WriteLine("End Landis_pro Harvest Initialization...\n");
+            Console.WriteLine("End Landis_pro FIRE Initialization...\n");
             Console.WriteLine("========================================\n");
         }
 
@@ -81,18 +80,11 @@ namespace Landis.Extension.Landispro.Fire
 
             if (i % Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepHarvest == 0)
             {
-                GlobalFunctions.HarvestPassCurrentDecade(i);
-                for (int r = 1; r <= Landis.Extension.Succession.Landispro.PlugIn.snr; r++)
-                {
-                    for (int c = 1; c <= Landis.Extension.Succession.Landispro.PlugIn.snc; c++)
-                    {
-                        GlobalFunctions.setUpdateFlags(r, c);
-                    }
-                }
+                //Todo
             }
             singularLandisIteration(i, Landis.Extension.Succession.Landispro.PlugIn.pPDP);
 
-            Console.WriteLine("End Landis_pro Harvest Once");
+            Console.WriteLine("End Landis_pro FIRE Once");
             Console.WriteLine();
         }
 
@@ -106,16 +98,7 @@ namespace Landis.Extension.Landispro.Fire
             {
                 fpforTimeBU.WriteLine("\nProcessing succession at Year: {0}:", itr);
 
-                if (itr % Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepHarvest == 0)
-                {
-                    Console.WriteLine("\nProcessing harvest events.\n");
-                    ltime = DateTime.Now;
-                    Harvest.GlobalFunctions.HarvestprocessEvents(itr / Landis.Extension.Succession.Landispro.PlugIn.gl_sites.SuccessionTimeStep);  //Global Function
-                    putHarvestOutput(itr / Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepHarvest, Landis.Extension.Succession.Landispro.PlugIn.wAdfGeoTransform); //output img files
-                    ltimeTemp = DateTime.Now;
-                    ltimeDiff = ltimeTemp - ltime;
-                    fpforTimeBU.WriteLine("Processing harvest: " + ltimeDiff + " seconds");
-                }
+                //Todo
             }
         }
     }

@@ -101,7 +101,11 @@ namespace Landis.Extension.Succession.Landispro
         public int MaxDistance { set { MaxDistofAllSpec = value; } }
         public uint SpecNum    { get { return specNum;   } }
         public int Pro0or401   { get { return pro0or401; } }
+        //Changed By YYF 2018.11
         public int TimeStepHarvest ;
+        //Changed By YYF 2019.4
+        public int TimeStepFire;
+        
         public int CellSize 
         {              
             get { return cellSize;  }

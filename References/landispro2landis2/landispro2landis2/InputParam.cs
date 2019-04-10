@@ -52,6 +52,7 @@ namespace Landis.Extension.Succession.Landispro
         public double Stocking_y_value { get; set; }
         public double Stocking_z_value { get; set; }
         public int TimeStepHarvest { get; set; }
+        public int TimeStepFire { get; set; }
 
         public InputParameters()
         {
@@ -246,6 +247,11 @@ namespace Landis.Extension.Succession.Landispro
             InputVar<int> timeStepHarvest = new InputVar<int>("HarvestTimestep");
             ReadVar(timeStepHarvest);
             parameters.TimeStepHarvest = timeStepHarvest.Value.Actual;
+
+            //Add by YYF 2019/4
+            InputVar<int> timeStepFire = new InputVar<int>("FireTimestep");
+            ReadVar(timeStepFire);
+            parameters.TimeStepFire = timeStepFire.Value.Actual;
 
             InputVar<double> stockingX = new InputVar<double>("StockingX");
             ReadVar(stockingX);
