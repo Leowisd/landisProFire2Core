@@ -156,6 +156,14 @@ namespace Landis.Extension.Landispro.Fire
         private List<string> Fire_regime_gisfiles = new List<string>();
         //</Add By Qia on July 31 2012>
 
+        
+        private void InitializationColor()
+        {
+            (new int[] {0, 0, 100, 150, 200, 0, 0, 0, 150, 0, 150, 255, 80, 150, 255}).CopyTo(red, 0);
+            (new int[] {0, 0, 0, 0, 0, 100, 150, 255, 0, 150, 150, 255, 80, 150, 255}).CopyTo(green, 0);
+            (new int[] {0, 150, 0, 0, 0, 0, 0, 0, 150, 150, 0, 0, 80, 150, 255}).CopyTo(blue, 0);
+        }
+
         //////////////////////////////////////////////////////////////////////
 
         // Construction/Destruction
@@ -339,55 +347,6 @@ namespace Landis.Extension.Landispro.Fire
             m_pStochastic = null;
             m_pFireSites = null;
             m_pFireRegimeUnits = null;
-        }
-
-        private void InitializationColor()
-        {
-            red[0] = 0;
-            red[1] = 0;
-            red[2] = 100;
-            red[3] = 150;
-            red[4] = 200;
-            red[5] = 0;
-            red[6] = 0;
-            red[7] = 0;
-            red[8] = 150;
-            red[9] = 0;
-            red[10] = 150;
-            red[11] = 255;
-            red[12] = 80;
-            red[13] = 150;
-            red[14] = 255;
-            green[0] = 0;
-            green[1] = 0;
-            green[2] = 0;
-            green[3] = 0;
-            green[4] = 0;
-            green[5] = 100;
-            green[6] = 150;
-            green[7] = 255;
-            green[8] = 0;
-            green[9] = 150;
-            green[10] = 150;
-            green[11] = 255;
-            green[12] = 80;
-            green[13] = 150;
-            green[14] = 255;
-            blue[0] = 0;
-            blue[0] = 150;
-            blue[0] = 0;
-            blue[0] = 0;
-            blue[0] = 0;
-            blue[0] = 0;
-            blue[0] = 0;
-            blue[0] = 0;
-            blue[0] = 150;
-            blue[0] = 150;
-            blue[0] = 0;
-            blue[0] = 0;
-            blue[0] = 80;
-            blue[0] = 150;
-            blue[0] = 255;
         }
 
         public static int count;
