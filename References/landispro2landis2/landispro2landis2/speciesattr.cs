@@ -205,6 +205,17 @@ namespace Landis.Extension.Succession.Landispro
         {
             get { return spe.MinSproutAge; }
         }
+
+        //Add by YYF 2019/4
+        public int FireTolerance
+        {
+            get { return spe.FireTolerance; }
+        }
+
+        public float VegReprodProb
+        {
+            get { return spe.VegReprodProb; }
+        }
         //========
 
         //Constructor

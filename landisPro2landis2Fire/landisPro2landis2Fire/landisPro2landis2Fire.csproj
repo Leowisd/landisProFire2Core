@@ -74,8 +74,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Plugin.cs" />
+    <Compile Include="CFinneyCell.cs" />
+    <Compile Include="CFIRE.cs" />
+    <Compile Include="CFireRegimeUnit.cs" />
+    <Compile Include="CFireSites.cs" />
+    <Compile Include="CFireRegimeUnits.cs" />
+    <Compile Include="LDPOINT.cs" />
+    <Compile Include="PILE.cs" />
+    <Compile Include="PlugIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StochasticLib.cs" />
+    <Compile Include="StochasticLib2.cs" />
+    <Compile Include="TRandomMersenne.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

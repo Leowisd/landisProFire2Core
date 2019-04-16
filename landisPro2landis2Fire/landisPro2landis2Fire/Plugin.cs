@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Landis.Core;
-using Landis.Library.FireManagement;
 using System.Diagnostics;
 using Landis.SpatialModeling;
 using System.IO;
@@ -13,16 +12,17 @@ using System.IO;
 
 namespace Landis.Extension.Landispro.Fire
 {
-    class Plugin
-        : FireExtensionMain
+    class PlugIn
+        : ExtensionMain
     {
+        public static readonly ExtensionType ExtType = new ExtensionType("disturbance:fire");
         public static readonly string ExtensionName = "Landis_pro Fire";
 
 
         private static ICore modelCore;
 
         public PlugIn()
-            : base(ExtensionName)
+            : base(ExtensionName, ExtType)
         {
         }
 
@@ -66,7 +66,7 @@ namespace Landis.Extension.Landispro.Fire
             Landis.Extension.Succession.Landispro.PlugIn.gl_sites.SuccessionTimeStep = Landis.Extension.Succession.Landispro.PlugIn.gl_param.SuccessionTimestep;
             // FIRE TIMESTEP
             Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepFire = Landis.Extension.Succession.Landispro.PlugIn.gl_param.TimeStepFire;
-            Timestep = Landis.Extension.Succession.Landispro.Plugin.gl_sites.TimeStepFire;
+            Timestep = Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepFire;
 
             Landis.Extension.Succession.Landispro.PlugIn.numSpecies = Landis.Extension.Succession.Landispro.PlugIn.gl_spe_Attrs.NumAttrs;
 
