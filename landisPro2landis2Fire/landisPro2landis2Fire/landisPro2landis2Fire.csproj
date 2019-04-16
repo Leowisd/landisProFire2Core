@@ -79,6 +79,7 @@
     <Compile Include="CFireRegimeUnit.cs" />
     <Compile Include="CFireSites.cs" />
     <Compile Include="CFireRegimeUnits.cs" />
+    <Compile Include="FireExport.cs" />
     <Compile Include="LDPOINT.cs" />
     <Compile Include="PILE.cs" />
     <Compile Include="PlugIn.cs" />

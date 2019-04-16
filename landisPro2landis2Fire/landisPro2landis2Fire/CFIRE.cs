@@ -89,9 +89,9 @@ namespace Landis.Extension.Landispro.Fire
         public const int __DEBUG = 0;
         public static double[] lifespan = new double[5] { (float)0.0, (float).2, (float).4, (float).7, (float).85 };
 
-        public static int[] red = new int[] { 0, 0, 100, 150, 200, 0, 0, 0, 150, 0, 150, 255, 80, 150, 255 };
-        public static int[] green = new int[] { 0, 0, 0, 0, 0, 100, 150, 255, 0, 150, 150, 255, 80, 150, 255 };
-        public static int[] blue = new int[] { 0, 150, 0, 0, 0, 0, 0, 0, 150, 150, 0, 0, 80, 150, 255 };
+        public static int[] red = new int[Succession.Landispro.map8.maxLeg];
+        public static int[] green = new int[Succession.Landispro.map8.maxLeg];
+        public static int[] blue = new int[Succession.Landispro.map8.maxLeg];
         public static PILE pile;
 
         public int flag_regime_update;
@@ -175,19 +175,29 @@ namespace Landis.Extension.Landispro.Fire
             Gdal.AllRegister(); //*
             double[] wAdfGeoTransform = new double[6]; //*
 
-            try
-            {
-                using (StreamReader fp = new StreamReader(strfn))
-                {
-                    ReadParam(fp);
-                    fp.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("FIRE: FIRE parameter file not found.");
-                Console.WriteLine(e.Message);
-            }
+            InitializationColor();
+
+            StreamReader fp1 = new StreamReader(strfn.Trim());
+            ReadParam(fp1);
+            fp1.Close();
+            //try
+            //{
+            //    Console.WriteLine(strfn + "!!");
+
+            //    StreamReader fp = new StreamReader(strfn.Trim());
+            //    ReadParam(fp);
+            //    fp.Close();
+            //    //using (StreamReader fp = new StreamReader(strfn))
+            //    //{
+            //    //    ReadParam(fp);
+            //    //    fp.Close();
+            //    //}
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("FIRE: FIRE parameter file not found.");
+            //     throw new Exception(e.Message);
+            //}
 
             //add the main output directory in front of the subdirectory
             string s;
@@ -244,19 +254,22 @@ namespace Landis.Extension.Landispro.Fire
 
             //FireRegimeUnits
             m_pFireRegimeUnits = new CFireRegimeUnits(DEFINE.MAX_LANDUNITS, m_pStochastic);
-            try
-            {
-                using (StreamReader fp = new StreamReader(m_fireParam.fireRegimeAttrFn))
-                {
-                    m_pFireRegimeUnits.read(fp);
-                    fp.Close();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("FIRE: fire regime attribute file not found.");
-                Console.WriteLine(e.Message);
-            }
+            StreamReader fp = new StreamReader(m_fireParam.fireRegimeAttrFn);
+            m_pFireRegimeUnits.read(fp);
+            fp.Close();
+            //try
+            //{
+            //    using (StreamReader fp = new StreamReader(m_fireParam.fireRegimeAttrFn))
+            //    {
+            //        m_pFireRegimeUnits.read(fp);
+            //        fp.Close();
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("FIRE: fire regime attribute file not found.");
+            //    Console.WriteLine(e.Message);
+            //}
 
             m_pFireRegimeUnits.attach(m_pFireSites);
             if (m_fireParam.iFireRegimeFlag != 0)
@@ -287,7 +300,6 @@ namespace Landis.Extension.Landispro.Fire
                 }
                 //m_pFireRegimeUnits->readFireRegimeGIS(fp); 
                 m_pFireRegimeUnits.readFireRegimeIMG(fpImg);
-                //LDfclose(fp);
                 fpImg.Dispose();
             }
             else
@@ -306,7 +318,7 @@ namespace Landis.Extension.Landispro.Fire
                 {
                     int tempID;
                     tempID = m_pFireSites[i, j].FRUIndex;
-                    m_pPDP.sTSLFire[i,j] = (short)m_pFireRegimeUnits[tempID].initialLastFire;
+                    m_pPDP.sTSLFire[i-1,j-1] = (short)m_pFireRegimeUnits[tempID].initialLastFire;
                 }
             }
             m_cummInitiationMap.dim(outsites.numRows, outsites.numColumns);
@@ -328,6 +340,56 @@ namespace Landis.Extension.Landispro.Fire
             m_pFireSites = null;
             m_pFireRegimeUnits = null;
         }
+
+        private void InitializationColor()
+        {
+            red[0] = 0;
+            red[1] = 0;
+            red[2] = 100;
+            red[3] = 150;
+            red[4] = 200;
+            red[5] = 0;
+            red[6] = 0;
+            red[7] = 0;
+            red[8] = 150;
+            red[9] = 0;
+            red[10] = 150;
+            red[11] = 255;
+            red[12] = 80;
+            red[13] = 150;
+            red[14] = 255;
+            green[0] = 0;
+            green[1] = 0;
+            green[2] = 0;
+            green[3] = 0;
+            green[4] = 0;
+            green[5] = 100;
+            green[6] = 150;
+            green[7] = 255;
+            green[8] = 0;
+            green[9] = 150;
+            green[10] = 150;
+            green[11] = 255;
+            green[12] = 80;
+            green[13] = 150;
+            green[14] = 255;
+            blue[0] = 0;
+            blue[0] = 150;
+            blue[0] = 0;
+            blue[0] = 0;
+            blue[0] = 0;
+            blue[0] = 0;
+            blue[0] = 0;
+            blue[0] = 0;
+            blue[0] = 150;
+            blue[0] = 150;
+            blue[0] = 0;
+            blue[0] = 0;
+            blue[0] = 80;
+            blue[0] = 150;
+            blue[0] = 255;
+        }
+
         public static int count;
         public void Activate(int itr, int[] freq, double[] wAdfGeoTransform)
         {
@@ -934,9 +996,10 @@ namespace Landis.Extension.Landispro.Fire
                 if ((inString = infile.ReadLine()) == null)
                     throw new Exception("Error reading in Cummulative probabilities of wind classes.");
                 sarray = System.Text.RegularExpressions.Regex.Split(inString.Trim(), @"\s+");
+
                 for (j = 0; j < 3; j++)
                 {
-                    m_fireParam.fire_betavalues[i,j] = double.Parse(sarray[j]);
+                    m_fireParam.fire_betavalues[i,j] = double.Parse(sarray[j+1]);
                 }
                 m_fireParam.fire_X2values[i] = double.Parse(sarray[5]);
             }
@@ -2219,11 +2282,11 @@ namespace Landis.Extension.Landispro.Fire
                         int tempID = m_pFireSites[i, j].FRUIndex;
                         if (m_pFireRegimeUnits[tempID].Active())
 						{
-                            m[(uint)i, (uint)j] = (ushort)(m_pPDP.sTSLFire[i,j] / 10);
+                            m[(uint)i, (uint)j] = (ushort)(m_pPDP.sTSLFire[i - 1,j - 1] / 10);
                         }    
 						else
 						{
-                            m[(uint)i, (uint)j] = 255;
+                            m[(uint)i , (uint)j ] = 255;
                         }
                     }
                 }

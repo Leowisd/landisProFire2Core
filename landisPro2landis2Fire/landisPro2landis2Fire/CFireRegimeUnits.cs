@@ -58,6 +58,7 @@ namespace Landis.Extension.Landispro.Fire
             {
                 if (numLU < maxLU) //J.Yang 04/16/2002
                 {
+                    pFireRegimeUnit[numLU] = new CFireRegimeUnit();
                     pFireRegimeUnit[numLU].Read(infile);
                     pFireRegimeUnit[numLU].index = numLU;
                     numLU++;

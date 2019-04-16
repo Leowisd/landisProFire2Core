@@ -100,7 +100,7 @@ namespace Landis.Extension.Landispro.Fire
             if ((instring = inFile.ReadLine()) == null)
                 throw new Exception("Error reading in fireInterval from landtype file.");
             sarray = instring.Split('#');
-            fireInterval = int.Parse(sarray[0]);
+            fireInterval = int.Parse(sarray[0].Trim());
 
             if ((instring = inFile.ReadLine()) == null)
                 throw new Exception("Error reading in fire ignition poisson parameter from landtype file.");
@@ -149,6 +149,9 @@ namespace Landis.Extension.Landispro.Fire
             if ((instring = inFile.ReadLine()) == null)
                 throw new Exception("Error reading in fireClass from landtype file.");
             sarray = System.Text.RegularExpressions.Regex.Split(instring.Trim(), @"\s+");
+
+            inFile.ReadLine();
+
             for (int i = 0; i < 5; i++)
             {
                 windClass[i] = int.Parse(sarray[i]);

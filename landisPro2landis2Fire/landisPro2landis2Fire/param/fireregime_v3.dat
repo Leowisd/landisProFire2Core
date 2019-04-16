@@ -1,0 +1,274 @@
+empty   #landtype name#
+5000             #mean fire return interval#
+0.0             #fire ignition coefficient#
+0            #MFS 37 cells#  
+0              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+251C   #landtype name#
+1000             #mean fire return interval#
+0.000016           #fire ignition coefficient#
+1             #MFS 37 cells#  
+2               #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+231H    #landtype name#
+165             #mean fire return interval#
+0.006038           #fire ignition coefficient#
+1            #MFS 37 cells#  
+14             #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+223A    #landtype name#
+41              #mean fire return interval#
+0.023952           #fire ignition coefficient#
+2            #MFS 37 cells#  
+22             #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+234D   #landtype name#
+1000             #mean fire return interval#
+0.000287           #fire ignition coefficient#
+1             #MFS 37 cells#  
+5               #STD#
+20          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+223G  #landtype name#
+1000             #mean fire return interval#
+0.000086           #fire ignition coefficient#
+1              #MFS 37 cells#  
+3               #STD#
+30          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+234A   #landtype name#
+1000             #mean fire return interval#
+0.000957        #fire ignition coefficient#
+0            #MFS 37 cells#  
+2              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+251E   #landtype name#
+951              #mean fire return interval#
+0.001051        #fire ignition coefficient#
+16           #MFS 37 cells#  
+257            #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+231B    #landtype name#
+36              #mean fire return interval#
+0.025000           #fire ignition coefficient#
+1             #MFS 37 cells#  
+9               #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+232J   #landtype name#
+144              #mean fire return interval#
+0.006911        #fire ignition coefficient#
+1            #MFS 37 cells#  
+4              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+232B  #landtype name#
+11              #mean fire return interval#
+0.025000           #fire ignition coefficient#
+1              #MFS 37 cells#  
+65              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+234C   #landtype name#
+181              #mean fire return interval#
+0.005505        #fire ignition coefficient#
+0            #MFS 37 cells#  
+5              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+232L   #landtype name#
+63             #mean fire return interval#
+0.015783           #fire ignition coefficient#
+2             #MFS 37 cells#  
+26              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+255D    #landtype name#
+1000             #mean fire return interval#
+0.000395           #fire ignition coefficient#
+0              #MFS 37 cells#  
+4               #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+232E    #landtype name#
+108              #mean fire return interval#
+0.009244           #fire ignition coefficient#
+3            #MFS 37 cells#  
+43             #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+232F    #landtype name#
+55             #mean fire return interval#
+0.018134           #fire ignition coefficient#
+1             #MFS 37 cells#  
+21              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+223D    #landtype name#
+268              #mean fire return interval#
+0.003724           #fire ignition coefficient#
+2            #MFS 37 cells#  
+12             #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+255A    #landtype name#
+150             #mean fire return interval#
+0.006663           #fire ignition coefficient#
+6            #MFS 37 cells#  
+70             #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+231E    #landtype name#
+58              #mean fire return interval#
+0.017154           #fire ignition coefficient#
+1             #MFS 37 cells#  
+12              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+255C    #landtype name#
+1000             #mean fire return interval#
+0.000938           #fire ignition coefficient#
+1              #MFS 37 cells#  
+11              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+M223A    #landtype name#
+146             #mean fire return interval#
+0.006834           #fire ignition coefficient#
+5            #MFS 37 cells#  
+42             #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+234E    #landtype name#
+307              #mean fire return interval#
+0.003251          #fire ignition coefficient#
+1            #MFS 37 cells#  
+5              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+M231A    #landtype name#
+51             #mean fire return interval#
+0.019434           #fire ignition coefficient#
+3             #MFS 37 cells#  
+39              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+231G    #landtype name#
+194             #mean fire return interval#
+0.005132           #fire ignition coefficient#
+3             #MFS 37 cells#  
+33              #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
+
+255B    #landtype name#
+1000            #mean fire return interval#
+0.000096          #fire ignition coefficient#
+1             #MFS 37 cells#  
+5               #STD#
+10          #last fire disturbance#
+10 80 130 180 210 #fire curve#
+1  2  3  3  3   #fire severity classes#
+30 80 130 180 210 #wind curve#
+5  4  2  1  0  #modified fire classes#
