@@ -1,1 +1,61 @@
-Initilization took: 00:00:03.9828786 seconds
+Initilization took: 00:00:04.2530425 seconds
+
+Processing succession at Year: 10:
+Processing fire: 00:00:00.4607841 seconds
+
+Processing succession at Year: 10:
+Processing succession: 00:00:00.0409151 seconds
+
+Processing succession at Year: 20:
+Processing fire: 00:00:00.4400189 seconds
+
+Processing succession at Year: 20:
+Processing succession: 00:00:00.0169828 seconds
+
+Processing succession at Year: 30:
+Processing fire: 00:00:00.4418098 seconds
+
+Processing succession at Year: 30:
+Processing succession: 00:00:00.0169543 seconds
+
+Processing succession at Year: 40:
+Processing fire: 00:00:00.4943707 seconds
+
+Processing succession at Year: 40:
+Processing succession: 00:00:00.0179513 seconds
+
+Processing succession at Year: 50:
+Processing fire: 00:00:00.4839977 seconds
+
+Processing succession at Year: 50:
+Processing succession: 00:00:00.0259143 seconds
+
+Processing succession at Year: 60:
+Processing fire: 00:00:00.4232878 seconds
+
+Processing succession at Year: 60:
+Processing succession: 00:00:00.0179685 seconds
+
+Processing succession at Year: 70:
+Processing fire: 00:00:00.4272762 seconds
+
+Processing succession at Year: 70:
+Processing succession: 00:00:00.0169485 seconds
+
+Processing succession at Year: 80:
+Processing fire: 00:00:00.4283013 seconds
+
+Processing succession at Year: 80:
+Processing succession: 00:00:00.0159581 seconds
+
+Processing succession at Year: 90:
+Processing fire: 00:00:00.6159841 seconds
+
+Processing succession at Year: 90:
+Processing succession: 00:00:00.0159937 seconds
+
+Processing succession at Year: 100:
+Processing fire: 00:00:00.6781023 seconds
+
+Processing succession at Year: 100:
+Processing succession: 00:00:00.0149599 seconds

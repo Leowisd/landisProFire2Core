@@ -42,6 +42,9 @@ namespace Landis.Extension.Succession.Landispro
         public static string fpforTimeBU_name = null;
         public static double[] wAdfGeoTransform = new double[6];
 
+        //change by YYF 2019/4
+        public static int envOn;
+
         private static uint specAtNum;
 
         private static int numbOfIter;
@@ -123,7 +126,7 @@ namespace Landis.Extension.Succession.Landispro
             In_Output.Init_IO();
 
 
-            int envOn = 0;
+            envOn = 0;
             int reclYear = 0;
 
 

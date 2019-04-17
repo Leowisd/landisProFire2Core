@@ -49,6 +49,7 @@ namespace Landis.Extension.Landispro.Fire
 
             int gDLLMode = 0;
             gDLLMode = gDLLMode | Succession.Landispro.defines.G_FIRE;
+
             //Todo
             pFire = new CFIRE(dataFile, 
                 gDLLMode, 
@@ -86,11 +87,15 @@ namespace Landis.Extension.Landispro.Fire
         {
             int i = modelCore.TimeSinceStart;
 
-            if (i % Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepHarvest == 0)
+            if (i % Landis.Extension.Succession.Landispro.PlugIn.gl_sites.TimeStepFire == 0)
             {
-                //update fire regime unit attr and fire regime GIS
-                pFire.updateFRU(i);
-                Console.WriteLine("fire regime unit attribute and gis has been updated at iteration {0}", i);
+                //And false means never run???
+                if ((Succession.Landispro.PlugIn.envOn > 0) && (i % Succession.Landispro.PlugIn.envOn == 0) && i > 1 && false)
+                {
+                    //update fire regime unit attr and fire regime GIS
+                    pFire.updateFRU(i);
+                    Console.WriteLine("fire regime unit attribute and gis has been updated at iteration {0}", i);
+                }                   
 
                 if (pFire.flag_regime_update == 1)
                 {
@@ -113,9 +118,10 @@ namespace Landis.Extension.Landispro.Fire
             {
                 fpforTimeBU.WriteLine("\nProcessing succession at Year: {0}:", itr);
 
-                //Todo
                 if (itr % Succession.Landispro.PlugIn.gl_sites.TimeStepFire == 0)
                 {
+                    itr /= Succession.Landispro.PlugIn.gl_sites.TimeStepFire;
+
                     ltime = DateTime.Now;
                     Console.WriteLine("\nStart simulating fire disturbance ... at {0}.", ltime);
 

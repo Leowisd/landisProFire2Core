@@ -210,7 +210,10 @@ namespace Landis.Extension.Landispro.Fire
             //add the main output directory in front of the subdirectory
             string s;
             s = string.Format("{0}\\Fire", strOutput);
-            DirectoryInfo dir = new DirectoryInfo(s);
+            if (!Directory.Exists(s))
+            {
+                Directory.CreateDirectory(s);
+            }
 
             s = string.Format("{0}\\Fire\\{1}", strOutput, m_fireParam.logFn);
             m_fireParam.logFn = string.Format("{0}", s);
@@ -352,7 +355,7 @@ namespace Landis.Extension.Landispro.Fire
         public static int count;
         public void Activate(int itr, int[] freq, double[] wAdfGeoTransform)
         {
-            StreamWriter logfile = new StreamWriter(m_fireParam.logFn); //fire log file.
+            StreamWriter logfile; //fire log file.
             double probForSite; //This is the probability of firethr. init. on a site.
   
             DateTime t1 = new DateTime();
@@ -449,43 +452,24 @@ namespace Landis.Extension.Landispro.Fire
             //Console.WriteLine("t7 is {0}", t7);
             //Setup fire parameters.
             //fseed(parameters.randSeed+itr*6);
-    		if (itr == 1)
-    		{
-                //if ((logfile=LDfopen(m_fireParam.logFn,3))==NULL) 
-                try
-                {
-                    using (logfile = new StreamWriter(m_fireParam.logFn))
-                    {
-                        logfile.WriteLine("TIMESTEP,COL,ROW,TOTAREA,NUMSITES,NUMCOHORTS");
-                        for (int it = 0; it < numFRU; it++)
-                        {
-                            logfile.WriteLine("FRU{0}", it);
-                        }
-                        logfile.WriteLine();
-                    }
-                    m_LogFP = logfile;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Error opening fire log file");
-                    Console.WriteLine(e.Message);
-                }
-		    }
-    		else
-    		{
-                try
-                {
-                    //logfile = new StreamWriter(m_fireParam.logFn);
-                    logfile = File.AppendText(m_fireParam.logFn);
-                    m_LogFP = logfile;
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine("Error opening fire log file");
-                    Console.WriteLine(e.Message);
-                }
-            }
 
+            if (itr == 1)
+            {
+                FileStream fs = new FileStream(m_fireParam.logFn, FileMode.Create, FileAccess.Write, FileShare.Write);
+                logfile = new StreamWriter(fs, System.Text.Encoding.Default);
+                logfile.WriteLine("TIMESTEP,COL,ROW,TOTAREA,NUMSITES,NUMCOHORTS");
+                for (int it = 0; it < numFRU; it++)
+                {
+                    logfile.WriteLine("FRU{0}", it);
+                }
+                logfile.WriteLine();
+            }
+            else
+            {
+                FileStream fs = new FileStream(m_fireParam.logFn, FileMode.Append, FileAccess.Write, FileShare.Write);
+                logfile = new StreamWriter(fs, System.Text.Encoding.Default);
+            }
+          
             t8 = DateTime.Now;
             //Console.WriteLine("t8 is {0}", t8);
             int lIgChecking = 0;
@@ -686,7 +670,7 @@ namespace Landis.Extension.Landispro.Fire
 		    }
 
             t13 = DateTime.Now;
-            Console.WriteLine("t13 is {0}", t13);
+            //Console.WriteLine("t13 is {0}", t13);
             //Add data to cummMap
 		    //and change TSLF
 		    for (i = 1;i <= snr;i++)
@@ -697,17 +681,17 @@ namespace Landis.Extension.Landispro.Fire
 				    {
 					    m_cummMap[(uint)i, (uint)j] = Math.Max(m_Map[(uint)i, (uint)j],m_cummMap[(uint)i, (uint)j]);
     				    //J.Yang should be max(m_cummMap(i,j), m_Map(i,j))
-					    m_pPDP.sTSLFire[i,j] = 0;
+					    m_pPDP.sTSLFire[i-1,j-1] = 0;
 				    }
 				    else
 				    {
-					    m_pPDP.sTSLFire[i,j] += (short)m_pLAND.TimeStepFire;
+					    m_pPDP.sTSLFire[i-1,j-1] += (short)m_pLAND.TimeStepFire;
 				    }
 			    }
 		    }
 
             t14 = DateTime.Now;
-            Console.WriteLine("t14 is {0}", t14);
+            //Console.WriteLine("t14 is {0}", t14);
 		    if (((itr % freq[1]) == 0) && (freq[1] <= m_pLAND.TimeStepFire) || (itr* m_pLAND.TimeStepFire == freq[1]) && (freq[1] >= 0))
 		    {
 			    //Write map output file.
@@ -757,11 +741,10 @@ namespace Landis.Extension.Landispro.Fire
 			    //double wAdfGeoTransform[6] = { 0.00, m_fireParam.cellSize, 0.00, 600.00, 0.00, -m_fireParam.cellSize };//*
 			    double nodata = 0;
                 m_cummMap.write(str, red, green, blue);
-			    WriteCummInitiationMap(snr, snc, itr, wAdfGeoTransform);
+                WriteCummInitiationMap(snr, snc, itr, wAdfGeoTransform);
 		    }
-
             t15 = DateTime.Now;
-            Console.WriteLine(t15);
+            //Console.WriteLine(t15);
             PrintWindLog();
 		    if (m_fireParam.iFuelFlag == 2 || m_fireParam.iFuelFlag == 3)
 		    {
@@ -1840,6 +1823,8 @@ namespace Landis.Extension.Landispro.Fire
             front1 = null;
             front2 = null;
             //add to fire log file
+            FileStream fs = new FileStream(m_fireParam.logFn, FileMode.Append, FileAccess.Write, FileShare.Write);
+            m_LogFP = new StreamWriter(fs, System.Text.Encoding.Default);
             m_LogFP.WriteLine("{0}, ", m_itr * m_pLAND.TimeStepFire);
             m_LogFP.WriteLine("{0}, {1}, {2}, ", col, row, totArea);
             m_LogFP.WriteLine("{0}, {1}", numSites, numCohorts);
@@ -1848,6 +1833,7 @@ namespace Landis.Extension.Landispro.Fire
                 m_LogFP.WriteLine(", {1}", land[i]);
             }
             m_LogFP.WriteLine();
+            m_LogFP.Close();
             return numSites;
         }
 
@@ -2358,8 +2344,10 @@ namespace Landis.Extension.Landispro.Fire
             FinneyCalculateWindCost();
             FinneyCalculateFinalCost();
             FinneyCalculateMinTime();
-            
+
             //add to fire log file
+            FileStream fs = new FileStream(m_fireParam.logFn, FileMode.Append, FileAccess.Write, FileShare.Write);
+            m_LogFP = new StreamWriter(fs, System.Text.Encoding.Default);
             m_LogFP.Write("{0}, ", m_itr * m_pLAND.TimeStepFire);
             string str="";
             if (m_fireParam.iFuelFlag == 2)
@@ -2377,6 +2365,7 @@ namespace Landis.Extension.Landispro.Fire
                 m_LogFP.Write(", {0}", burnedCells[i]);
             }
             m_LogFP.WriteLine();
+            m_LogFP.Close();
             return length_BurnedCells;
         }
 

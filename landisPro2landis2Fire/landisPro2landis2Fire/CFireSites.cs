@@ -28,7 +28,7 @@ namespace Landis.Extension.Landispro.Fire
         public int m_iCols;
         //<Add By Qia on Nov 24 2008>
         public List<FIRESITE> SortedIndex = new List<FIRESITE>();
-        public List<List<LDPOINT>> FireRegimeUnitsList = new List<List<LDPOINT>>(70000);
+        public List<List<LDPOINT>> FireRegimeUnitsList = new List<List<LDPOINT>>();
         public int[] FireRegimeCurrentIndex = new int[70000];
 
 
@@ -40,6 +40,10 @@ namespace Landis.Extension.Landispro.Fire
             m_iRows = 0;
             m_iCols = 0;
             //m_pFireLAND = NULL;//commented By Qia on Nov 24 2008
+            for (int i = 0; i < 70000; i++)
+            {
+                FireRegimeUnitsList.Add(new List<LDPOINT>());
+            }
         }
         public CFireSites(int a, int b)
         {
@@ -65,6 +69,11 @@ namespace Landis.Extension.Landispro.Fire
                     x = x + j - 1;
                     map[x] = temp;
                 }
+            }
+
+            for (int i=0; i<70000; i++)
+            {
+                FireRegimeUnitsList.Add(new List<LDPOINT>());
             }
         }
 
