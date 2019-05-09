@@ -538,7 +538,7 @@ namespace Landis.Extension.Landispro.Fire
 		    while (m_iNumLU > 0) //Dead Lock in this loop //Qia on May 1st 2009   
 		    {
                 t11 = DateTime.Now;
-                Console.WriteLine("t11 is {0}", t11);
+                //Console.WriteLine("t11 is {0}", t11);
                 count = 0;
                 lIgChecking++;  
 			    //randomly select k from 0 to iNumLU-1 //J.Yang use stochastic.uniform instead?
@@ -584,7 +584,7 @@ namespace Landis.Extension.Landispro.Fire
 					    }  
 					    else
 					    {
-						    probForSite = Math.Exp((double) m_pPDP.sTSLFire[p1y,p1x] * ((double) - 1 / fireINTERV)); //10*m_pLAND->TimeStep;
+						    probForSite = Math.Exp((double) m_pPDP.sTSLFire[p1y-1,p1x-1] * ((double) - 1 / fireINTERV)); //10*m_pLAND->TimeStep;
 					    }
     					// probForSite is the reliability probability: has life time as least t
     					// say X is life time of system, t = lastFire;
@@ -1219,7 +1219,7 @@ namespace Landis.Extension.Landispro.Fire
                 nCKilled = 0;
                 j = tempID = m_pFireSites[p1.y, p1.x].FRUIndex;
                 fireINTERV = m_pFireRegimeUnits[tempID].fireInterval;
-                dTSLF = m_pPDP.sTSLFire[p1.y,p1.x];
+                dTSLF = m_pPDP.sTSLFire[p1.y-1,p1.x-1];
                 if (fireINTERV == 0)
                 {
                     siteProb = 1;
@@ -1426,7 +1426,7 @@ namespace Landis.Extension.Landispro.Fire
                 fireClass = 0;
                 for (i = 4; i >= 0; i--)
                 {
-                    if (pFRU.fireCurve[i] <= m_pPDP.sTSLFire[p.y,p.x])
+                    if (pFRU.fireCurve[i] <= m_pPDP.sTSLFire[p.y-1,p.x-1])
                     {
                         fireClass = Math.Max(fireClass, pFRU.fireClass[i]);
                     }
@@ -1441,7 +1441,7 @@ namespace Landis.Extension.Landispro.Fire
             //how to simulate wind effect on fire damage	
             if ((m_DLLMode & Succession.Landispro.defines.G_WIND) != 0)
             {
-                if (m_pPDP.sTSLFire[p.y,p.x] > m_pPDP.sTSLWind[p.y, p.x])
+                if (m_pPDP.sTSLFire[p.y-1,p.x-1] > m_pPDP.sTSLWind[p.y, p.x])
                 {
                     for (i = 4; i >= 0; i--)
                     {
@@ -1507,7 +1507,7 @@ namespace Landis.Extension.Landispro.Fire
             //</Add By Qia on Nov 24 2008>
             if (numCohorts != 0)
             {
-                m_pPDP.sTSLFire[p.y,p.x] = 0;
+                m_pPDP.sTSLFire[p.y-1,p.x-1] = 0;
             }
             return numCohorts;
         }
